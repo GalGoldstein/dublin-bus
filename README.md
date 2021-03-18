@@ -1,6 +1,11 @@
 
 # Dublin bus
 
+# 1st place - students final projects
+
+[Presentation - Youtube](https://youtu.be/-PGyBLPF-IM "Presentation - Youtube")
+
+
 ![](https://i.imgur.com/fSJlKGa.png)
 
 
@@ -35,8 +40,8 @@ In this project we help the Dublin bus control center and citizines of the city 
 
 2.  Another machine that will be our warehouse, together with Apache Cassandra cluster
 
-	* This is only optional(!) we dont use the warehouse in this part (but we do in other parts of our project)
-	* See instructions below
+	* This warehouse is used to log extreme air quality events
+	* See instructions below for setup
 
 ### notebook.ipnyb
 *  Contains the cells to run to reproduce the code
@@ -45,11 +50,12 @@ In this project we help the Dublin bus control center and citizines of the city 
 
 In this code we:
 - Show the closure location that will be recommended upon high air pollution event.
-- Calculate bus rides alternatives between every two bus stops in Dublin
+- Calculate bus rides alternatives between every two bus stops in Dublin, based on kafka stram bus locations
 - Process air quality data
 - Read the Kafka data stream for dublin-bus data
-- Impute missing data in air quality index values by windowed mean imputation
+- Impute missing data in air quality index values by windowed mean imputation [[1]](#1)
 - Create and updated live map for the dashboard, deploy it to git to update the bus control center dashboard.
+- Upload data to warehouse regarding times of high air pollution events
 
 ### Cassandra cluster setup
 - We will setup Cassandra 3.11.9 on our machine, configure the cluster and open communication with other machine on the same network
@@ -102,7 +108,12 @@ sudo mv /var/lib/cassandra/commitlog /StudentData/cassandra
 9. Finally, Start cassandra: `systemctl start cassandra` than `journalctl -f -u cassandra` and exit.
 
 Thats it!
-<br>
-[Yotam Martin](https://www.linkedin.com/in/yotam-martin-b41493170/ "Yotam Martin")
-<br>
+
+### References
+<a id="1">[1]</a>
+ [A Review of Missing Data Treatment Methods](https://spu.fem.uniag.sk/cvicenia/ksov/prokeinova/MBA-Business%20Modelling/Lecture%201/Missing%20values/missing%20values.pdf "A Review of Missing Data Treatment Methods"). Liu Peng, Lei Lei.
+
+_____
+
+[Yotam Martin](https://www.linkedin.com/in/yotam-martin-b41493170/ "Yotam Martin"), 
 [Gal Goldstein](https://www.linkedin.com/in/gal-goldstein-8776b0168/ "Gal Goldstein")
